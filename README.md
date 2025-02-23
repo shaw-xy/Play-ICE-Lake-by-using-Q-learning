@@ -4,11 +4,9 @@ This repository contains a Q-Learning implementation for solving the `FrozenLake
 - [Introduction](#introduction)
 - [Environment](#environment)
 - [Q-Learning Algorithm](#q-learning-algorithm)
-- [Implementation Details](#implementation-details)
-- [Usage](#usage)
-- [Results](#results)
 - [Dependencies](#dependencies)
-- [License](#license)
+- [Results](#Results)
+
 
 ## Introduction
 
@@ -19,7 +17,20 @@ python 3.8
 pycharm 24.3.1.1
 The environment consists of a 4x4 grid:
 
-## install independence
+## Q-Learning Algorithm
+
+Q-Learning is a model-free reinforcement learning algorithm that learns the value of an action in a particular state. The algorithm updates the Q-values using the Bellman equation:
+
+\[ Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right] \]
+
+Where:
+- \( Q(s, a) \): The current Q-value for state \( s \) and action \( a \).
+- \( \alpha \): The learning rate.
+- \( r \): The reward received after taking action \( a \) in state \( s \).
+- \( \gamma \): The discount factor.
+- \( \max_{a'} Q(s', a') \): The maximum Q-value for the next state \( s' \).
+
+## dependencies
 import numpy as np
 import gymnasium as gym
 import random
@@ -27,6 +38,14 @@ import os
 import tqdm
 
 import pickle
+
+## Results
+After training the agent for 100 episodes, the evaluation results are as follows:
+
+example： Mean_reward=0.75 +/- 0.43
+
+This indicates that the agent successfully reaches the goal 75% of the time on average.
+
 
 ## Run the training and evaluation script:
 lake.py
@@ -38,9 +57,4 @@ The script will print the mean reward and standard deviation after evaluation.
 The Q-table will be saved to “qtable_frozenlake.pkl”
 
 
-## Results
-After training the agent for 100 episodes, the evaluation results are as follows:
 
-example： Mean_reward=0.75 +/- 0.43
-
-This indicates that the agent successfully reaches the goal 75% of the time on average.
